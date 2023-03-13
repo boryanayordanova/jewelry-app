@@ -1,5 +1,5 @@
 .nav {
-    background: linear-gradient(to right, transparent, transparent, purple);
+    background: linear-gradient(to right, transparent, transparent, fuchsia);
 }
 
 nav ul {
@@ -16,7 +16,8 @@ margin: 10px;
 }
 
 nav li a {
-    color: lightblue;
+    color: white;
+    font-weight: bold;
     text-decoration: none;
 }
 

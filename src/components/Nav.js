@@ -1,9 +1,9 @@
 import { Routes, Route, Link } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
-import AboutPage  from "./Pages/AboutPage";
+import AboutPage from "./Pages/AboutPage";
 import styles from "./Nav.module.css";
 
-export default function Nav(){
+export default function Nav () {
     return (
         <>
         <nav className={styles.nav}>

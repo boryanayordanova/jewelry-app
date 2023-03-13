@@ -18,7 +18,7 @@
   background-size: cover;
   margin: auto;
   z-index: -1;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 .App-logo {
@@ -54,4 +54,21 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+button {
+  background: none;
+  color: white;
+  border: 1px solid white;  
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: white;
+  color: purple;
+  border: 1px solid white;  
+  transition: 0.3s;
 }

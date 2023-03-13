@@ -5,8 +5,7 @@ import Nav from './components/Nav';
 import Article from './components/Article';
 import Footer from './components/Footer';
 //import FirebaseFetchData from './components/FirebaseFetchData'
-
-
+import { JewelryList } from './components/JewelryList';
 
 function App() {
   return (
@@ -15,7 +14,9 @@ function App() {
     <Header />
     <Nav />
     {/* <Article />  */}
+    {/* <JewelryList /> */}
     <Footer />
+
 
 {/* <FirebaseConnection /> */}
 {/* <FirebaseFetchData /> */}
