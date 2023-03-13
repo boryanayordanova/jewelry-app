@@ -56,6 +56,10 @@
   }
 }
 
+article {
+  max-width: 1000px;
+  margin: auto;
+}
 
 button {
   background: none;

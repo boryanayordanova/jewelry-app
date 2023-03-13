@@ -2,8 +2,7 @@
 .jewelry-item-container {
     border: 3px solid purple;
     border-radius: 10px;
-    padding: 10px;
-    margin: 20px;    
+    padding: 10px;       
     text-align: center;
     max-width: 200px;
     /* display: flex;
@@ -14,6 +13,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+
+}
+
+.jewelry-item-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: black;
+    opacity: 0.4;
+    z-index: -1;
+
 
 }
 
