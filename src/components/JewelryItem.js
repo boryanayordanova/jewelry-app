@@ -1,8 +1,10 @@
 import styles from "./JewelryItem.module.css";
 
+
 export default function JewelryItem ({
-    name, color, id, image
+    name, color, id, image, category
 }) {
+  
     return (
         <>
         {/* <h1>Item</h1> */}
@@ -12,7 +14,8 @@ export default function JewelryItem ({
         <div className={styles["jewelry-item-data"]}>
             {/* <div>ID: <span>{id}</span></div> */}
             <div className={styles["jewelry-name"]}>Name: <span>{name}</span></div>
-            <div>Color: <span>{color}</span></div>
+            <div>Color: <span>{color}</span></div>            
+            <div>Category: <span>{category}</span></div>
             {/* <div>Category: <span>{category}</span></div>
             <div>Price: <span>{price} bgn</span></div> */}
         
@@ -20,6 +23,10 @@ export default function JewelryItem ({
             <div className={styles["jewelry-buttons"]}>
                 <button>Edit</button>
                 <button>Delete</button>
+            </div>
+            <div className={styles["jewelry-likes"]}>
+                <div>14</div>
+                <button>&#10084;</button>
             </div>
 
     </div>

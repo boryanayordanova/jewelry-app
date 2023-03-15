@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import * as FirebaseFetchData from './FirebaseFetchData';
-import JewelryItem from "./JewelryItem";
+import { useState } from "react";
+
 import { JewelryCreate } from "./JewelryCreate";
 import styles from "./JewelryList.module.css";
 
+import JewelryItem from "./JewelryItem";
+import { useLocation } from 'react-router-dom';
 
 export default function JewelryList ({
     jewelry,
@@ -15,8 +16,6 @@ export default function JewelryList ({
 
     const [showAddJewelry, setShowAddJewelry] = useState(false);
     
-
-
     const onJewelryAddClick = () => {
         setShowAddJewelry(true);
     };
@@ -25,32 +24,60 @@ export default function JewelryList ({
         setShowAddJewelry(false);
        
     };
+
+    let location = useLocation();
+    // console.log(location.pathname);
+ 
+      
+        return (
+            <>
+            {/* <h2>Jewelries List:</h2> */}
     
-    return (
-        <>
-        <h2>List here</h2>
+            {showAddJewelry &&
+                    <JewelryCreate
+                        onClose={onClose}
+                        // onUserCreateSubmit={onUserCreateSubmitHandler}
+                        formValues={formValues}
+                        formChangeHandler={formChangeHandler}
+                        formErrors={formErrors}
+                        formValidate={formValidate}
+                    />
+                }
+    
+            <button className={styles["btn-add-new"]} onClick={onJewelryAddClick}>Add New</button>
+    
+            <div className={styles["jewelry-items-container"]}>
 
-        {showAddJewelry &&
-                <JewelryCreate
-                    onClose={onClose}
-                    // onUserCreateSubmit={onUserCreateSubmitHandler}
-                    formValues={formValues}
-                    formChangeHandler={formChangeHandler}
-                    formErrors={formErrors}
-                    formValidate={formValidate}
-                />
-            }
+                {jewelry.filter(valEar => (valEar.category === 'earrings' && location.pathname==='/earrings')).map(jew => (                   
+                       <JewelryItem key={jew.id} {...jew} />                            
+                        )
+                    )                                           
+                }  
 
-        <button className={styles["btn-add-new"]} onClick={onJewelryAddClick}>Add New</button>
+                {jewelry.filter(valNeck => (valNeck.category === 'necklace' && location.pathname==='/necklaces')).map(jew => (                                                 
+                        <JewelryItem key={jew.id} {...jew} />     
+                        )
+                    )                                           
+                }  
 
-        <div className={styles["jewelry-items-container"]}>
-            {jewelry.map(jew => (
-                <JewelryItem key={jew.id} {...jew}/>                                 
-            ))}        
-        </div>
+                {jewelry.filter(valBra => (valBra.category === 'bracelet' && location.pathname==='/bracelets')).map(jew => (                                                 
+                        <JewelryItem key={jew.id} {...jew} />     
+                        )
+                    )                                           
+                }    
 
 
-        
-        </>
-    )
+                {jewelry.filter(valAll => location.pathname==='/').map(jew => (                                                 
+                        <JewelryItem key={jew.id} {...jew} />     
+                        )
+                    )                                           
+                }     
+                   
+            </div>
+    
+            </>
+        )
+
+    
+
 }

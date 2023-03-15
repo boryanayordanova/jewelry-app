@@ -2,7 +2,7 @@ import JewelryList from "../JewelryList";
 import { useState, useEffect } from "react";
 import * as FirebaseFetchData from '../FirebaseFetchData';
 
-export default function HomePage () {
+export default function MainPages () {
 
     const [jewelry, setJewelry] = useState([]);
 
@@ -18,20 +18,13 @@ export default function HomePage () {
     }, []);
 
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/todos.json`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             const result = Object.keys(data).map(id => ({ id, ...data[id] }));
-    //             setTodos(result);
-    //             setIsLoading(false);
-    //         });
-    // }, []);
-
     return (
         <article>
-            <h1>Home p</h1>            
+            <h1>Jewelries List:</h1>
             <JewelryList jewelry={jewelry}/>
         </article>
     )
+
+
+
 }

@@ -13,8 +13,6 @@ function App() {
 
     <Header />
     <Nav />
-    {/* <Article />  */}
-    {/* <JewelryList /> */}
     <Footer />
 
 

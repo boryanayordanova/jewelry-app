@@ -4,17 +4,28 @@
     border-radius: 10px;
     padding: 10px;       
     text-align: center;
-    max-width: 200px;
+    /* width: 215px; */
+    width: calc(25% - 36px);
+    margin: 5px 5px 15px;
     /* display: flex;
     flex-direction: column;
     justify-content: space-around; */
-    transition: 0.3s;
-    width: 25%;
+    transition: 0.3s;    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
+    position: relative;  
+}
 
+@media screen and (max-width: 1024px){
+    .jewelry-item-container {
+        width: calc(50% - 36px);
+    }    
+}
+@media screen and (max-width: 768px){
+    .jewelry-item-container {
+        width: calc(100% - 36px);
+    }    
 }
 
 .jewelry-item-container:before {
@@ -44,12 +55,7 @@
 
 
 
-.jewelry-item-container .jewelry-img {
-    /* background: red; */
-    /* width: 100%; */
-    /* max-width: 500px;
-    min-width: 500px; */
-}
+
 
 .jewelry-item-container .jewelry-img img {
     display: block;
@@ -68,6 +74,7 @@
 
 .jewelry-item-container div span {
     font-weight: bold;
+    text-transform: capitalize;
     /* padding-left: 10px; */
 }
 
@@ -100,4 +107,24 @@
 
 .jewelry-item-container .jewelry-buttons button {
     margin: 0 5px;
+}
+
+
+.jewelry-item-container .jewelry-likes {
+    display: flex;
+    padding-top: 10px;
+    justify-content: space-between;
+    border-top: 2px solid purple;
+    margin-top: 20px;
+    align-items: center; 
+    transition: 0.3s;
+}
+
+.jewelry-item-container:hover .jewelry-likes {
+    border-color: white;
+    transition: 0.3s;
+}
+
+.jewelry-likes button {
+    /* margin-left: 10px; */
 }

@@ -1,27 +1,34 @@
-import { Routes, Route, Link } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
+import { Routes, Route, NavLink } from "react-router-dom";
+
+import MainPages from "./Pages/MainPages";
 import AboutPage from "./Pages/AboutPage";
 import styles from "./Nav.module.css";
+
+
+
 
 export default function Nav () {
     return (
         <>
         <nav className={styles.nav}>
             <ul>
-                <li><Link to="/">All Jewelries</Link></li>
-                <li><Link to="/">Top Likes</Link></li>
-                <li><Link to="/">Еarrings</Link></li>
-                <li><Link to="/">Bracelets</Link></li>
-                <li><Link to="/">Necklaces</Link></li>
-                <li><Link to="/about">About</Link></li>
-                {/* <li><Link to="/contact">Contact</Link></li>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Register</Link></li> */}
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/">All Jewelries</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/top-links">Top Likes</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/earrings">Еarrings</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/bracelets">Bracelets</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/necklaces">Necklaces</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/about">About</NavLink></li>
+                {/* <li><NavLink to="/contact">Contact</NavLink></li>
+                <li><NavLink to="/login">Login</NavLink></li>
+                <li><NavLink to="/register">Register</NavLink></li> */}
             </ul>
         </nav>
 
         <Routes>
-            <Route path="/" element={<HomePage />} />;
+            <Route path="/" element={<MainPages />} />;
+            <Route path="/earrings" element={<MainPages />} />;
+            <Route path="/bracelets" element={<MainPages />} />;
+            <Route path="/necklaces" element={<MainPages />} />;
             {/* <Route path="/" element={<h2>Home P</h2>} />; */}
             <Route path="/about" element={<AboutPage />} />;
             {/* <Route path="/about" element={<h2>About P</h2>} />; */}

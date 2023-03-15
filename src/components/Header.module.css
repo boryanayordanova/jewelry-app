@@ -11,7 +11,28 @@ header > a {
 
 .mainHeadline span {
     display: block;
-    color: lightblue;
+    color: deepskyblue;
     font-size: 16px;
     line-height: 18px;
 }
+
+.auth-buttons {
+    display: flex;    
+    justify-content: end;
+    padding: 20px;
+    align-items: center;
+}
+
+.auth-buttons a {
+    /* color: green; */
+    text-decoration: none;
+    padding: 10px;
+}
+
+.auth-buttons a:hover {
+    text-decoration: underline;
+}
+
+/* .auth-buttons a.active {
+    color: yellow !important;
+} */
