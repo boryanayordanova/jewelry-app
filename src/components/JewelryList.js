@@ -1,32 +1,37 @@
 import { useState } from "react";
 
 import { JewelryCreate } from "./JewelryCreate";
+import JewelryItem from "./JewelryItem";
 import styles from "./JewelryList.module.css";
 
-import JewelryItem from "./JewelryItem";
 import { useLocation } from 'react-router-dom';
 
 export default function JewelryList ({
     jewelry,
-    formValues,
-    formChangeHandler,
-    formErrors,
-    formValidate,
+    dataFromList
+
     }) {
 
     const [showAddJewelry, setShowAddJewelry] = useState(false);
+    let location = useLocation();
     
     const onJewelryAddClick = () => {
         setShowAddJewelry(true);
     };
 
-    const onClose = () => {      
+    const onCloseFormHandler = () => {      
         setShowAddJewelry(false);
        
     };
 
-    let location = useLocation();
-    // console.log(location.pathname);
+
+
+    const getDataCreatedJewelryForm = (data) => {
+        console.log("List data:");
+        console.log(data);
+        dataFromList(data);
+        setShowAddJewelry(false)
+    }
  
       
         return (
@@ -35,15 +40,18 @@ export default function JewelryList ({
     
             {showAddJewelry &&
                     <JewelryCreate
-                        onClose={onClose}
-                        // onUserCreateSubmit={onUserCreateSubmitHandler}
-                        formValues={formValues}
-                        formChangeHandler={formChangeHandler}
-                        formErrors={formErrors}
-                        formValidate={formValidate}
+                        onCloseForm={onCloseFormHandler}                       
+                        // onSubmitCreateJewelryForm={onSubmitCreateJewelryHandler}
+                        dataCreatedJewelryForm={getDataCreatedJewelryForm}
+
+                        // formChangeHandler={formChangeHandler}
+                        // formErrors={formErrors}
+                        // formValidate={formValidate}
                     />
-                }
+            }
     
+
+            
             <button className={styles["btn-add-new"]} onClick={onJewelryAddClick}>Add New</button>
     
             <div className={styles["jewelry-items-container"]}>
@@ -72,6 +80,10 @@ export default function JewelryList ({
                         )
                     )                                           
                 }     
+
+                {jewelry.lenght === 0 && (
+                    <h3>None Jewelry yet</h3>
+                )}
                    
             </div>
     

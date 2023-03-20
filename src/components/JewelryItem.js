@@ -14,7 +14,7 @@ export default function JewelryItem ({
         <div className={styles["jewelry-item-data"]}>
             {/* <div>ID: <span>{id}</span></div> */}
             <div className={styles["jewelry-name"]}>Name: <span>{name}</span></div>
-            <div>Color: <span>{color}</span></div>            
+            {/* <div>Color: <span>{color}</span></div>             */}
             <div>Category: <span>{category}</span></div>
             {/* <div>Category: <span>{category}</span></div>
             <div>Price: <span>{price} bgn</span></div> */}

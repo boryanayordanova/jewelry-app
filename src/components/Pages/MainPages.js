@@ -1,6 +1,7 @@
 import JewelryList from "../JewelryList";
 import { useState, useEffect } from "react";
-import * as FirebaseFetchData from '../FirebaseFetchData';
+import * as FirebaseFetchData from '../Services/FirebaseService';
+
 
 export default function MainPages () {
 
@@ -17,11 +18,24 @@ export default function MainPages () {
             });
     }, []);
 
+    const data = async (d) => {
+        console.log("data main");
+        console.log(d);
+
+        const newJewelry = await FirebaseFetchData.create(d);
+
+        console.log("new je");
+        console.log(newJewelry);
+
+        return newJewelry;
+        //add to state
+    }
+
 
     return (
         <article>
             <h1>Jewelries List:</h1>
-            <JewelryList jewelry={jewelry}/>
+            <JewelryList jewelry={jewelry} dataFromList={data}/>
         </article>
     )
 
