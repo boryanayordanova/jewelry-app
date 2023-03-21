@@ -20,6 +20,7 @@
   margin: auto;
   z-index: -1;
   opacity: 0.3;
+  background-attachment: fixed;
 }
 
 .App-logo {

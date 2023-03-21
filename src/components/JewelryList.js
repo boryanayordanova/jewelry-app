@@ -2,9 +2,10 @@ import { useState } from "react";
 
 import { JewelryCreate } from "./JewelryCreate";
 import JewelryItem from "./JewelryItem";
-import styles from "./JewelryList.module.css";
+import styles from "./JewelryList.module.scss";
 
 import { useLocation } from 'react-router-dom';
+import JewelryItemLoggedUser from "./JewelryItemLoggedUser";
 
 export default function JewelryList ({
     jewelry,
@@ -21,9 +22,7 @@ export default function JewelryList ({
 
     const onCloseFormHandler = () => {      
         setShowAddJewelry(false);
-       
     };
-
 
 
     const getDataCreatedJewelryForm = (data) => {
@@ -80,6 +79,12 @@ export default function JewelryList ({
                         )
                     )                                           
                 }     
+
+                {jewelry.filter(valLoggedUser => location.pathname==='/my-jewelry').map(jew => (                                                 
+                        <JewelryItemLoggedUser key={jew.id} {...jew} />     
+                        )
+                    )                                           
+                } 
 
                 {jewelry.lenght === 0 && (
                     <h3>None Jewelry yet</h3>

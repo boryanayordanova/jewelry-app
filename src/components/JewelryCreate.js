@@ -63,8 +63,8 @@ export const JewelryCreate = ({
                         </div>
 
                         <div className={styles["form-group"]}>
-                            <label htmlFor="jewCategory">Category:</label>
-                            <select name="jewCategory" id="jewCategory" onChange={onChangeHandlerCreateJewelry} placeholder="Select Jewelry Category..." >
+                            <label htmlFor="category">Category:</label>
+                            <select name="category" id="category" onChange={onChangeHandlerCreateJewelry} placeholder="Select Jewelry Category..." >
                                 <option value="earrings">Earrings</option>
                                 <option value="bricelet">Bricelet</option>
                                 <option value="necklace">Necklace</option>

@@ -19,11 +19,18 @@ export const getAll = async () => {
 
 export const create = async (jewelryData) => {
 
+    console.log('FireBase data to post:')
+
+    console.log(jewelryData)
+
     const result = await request.post(baseUrl, jewelryData);
+
+    
+    console.log('FireBase posted data:')
 
     console.log(result);
 
-    return result;
+    return jewelryData;
 
 
     // const response = await fetch(baseUrl, {

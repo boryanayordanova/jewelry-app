@@ -1,0 +1,98 @@
+
+.jewelry-item-container {
+    border: 3px solid purple;
+    border-radius: 10px;
+    padding: 10px;       
+    text-align: center;
+    width: calc(25% - 36px);
+    margin: 5px 5px 15px;
+    transition: 0.3s;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;  
+
+    @media screen and (max-width: 1024px){
+        width: calc(50% - 36px);
+    }
+
+    @media screen and (max-width: 768px){
+        width: calc(100% - 36px);
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background: black;
+        opacity: 0.4;
+        z-index: -1;
+    }
+
+    &:hover {
+        background: purple;
+        transition: 0.3s;
+
+        .jewelry-likes {
+            border-top: 2px solid white;
+        }
+    }
+
+    div {
+        span {
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        &.jewelry-img {
+    
+            img {
+                display: block;              
+                max-height: 150px;
+                border-radius: 10px;
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+            }
+    
+        }
+
+        &.jewelry-item-data {          
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & > div {
+                display: flex;
+                justify-content: space-between;
+                text-align: right;
+                padding: 10px 0;
+            }
+        }
+
+        &.jewelry-buttons {
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+
+            button {
+                margin: 0 5px;
+            }
+        }
+
+        &.jewelry-likes {
+            display: flex;
+            padding-top: 10px;
+            justify-content: space-between;
+            border-top: 2px solid purple;
+            margin-top: 20px;
+            align-items: center; 
+            transition: 0.3s;
+        }
+    }
+}

@@ -10,8 +10,9 @@ export default function MainPages () {
     useEffect(() => {
         FirebaseFetchData.getAll()            
             .then(data => {                
-                //setJewelry(Object.values(data));
-                setJewelry(Object.keys(data).map(id => ({ id, ...data[id] })));            
+                const j = Object.keys(data).map(id => ({ id, ...data[id] }))
+                j.reverse();
+                setJewelry(j);            
             })
             .catch(err => {
                 console.log('Error' + err);
@@ -27,8 +28,19 @@ export default function MainPages () {
         console.log("new je");
         console.log(newJewelry);
 
-        return newJewelry;
-        //add to state
+        
+
+        {FirebaseFetchData.getAll()
+            .then(data => {    
+                const j = Object.keys(data).map(id => ({ ...data[id], id }));
+                j.reverse();            
+            setJewelry(j);            
+        })
+        .catch(err => {
+            console.log('Error' + err);
+        });}
+
+
     }
 
 

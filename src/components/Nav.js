@@ -2,7 +2,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 
 import MainPages from "./Pages/MainPages";
 import AboutPage from "./Pages/AboutPage";
-import styles from "./Nav.module.css";
+import styles from "./Nav.module.scss";
 
 
 
@@ -12,8 +12,9 @@ export default function Nav () {
         <>
         <nav className={styles.nav}>
             <ul>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/my-jewelry">My Trinkets</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/">All Jewelries</NavLink></li>
-                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/top-links">Top Likes</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/top-links">Top Liked</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/earrings">Еarrings</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/bracelets">Bracelets</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/necklaces">Necklaces</NavLink></li>
@@ -25,6 +26,7 @@ export default function Nav () {
         </nav>
 
         <Routes>
+            <Route path="/my-jewelry" element={<MainPages />} />;
             <Route path="/" element={<MainPages />} />;
             <Route path="/earrings" element={<MainPages />} />;
             <Route path="/bracelets" element={<MainPages />} />;

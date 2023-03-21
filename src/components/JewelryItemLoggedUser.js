@@ -1,7 +1,7 @@
 import styles from "./JewelryItem.module.scss";
 
 
-export default function JewelryItem ({
+export default function JewelryItemLoggedUser ({
     name, color, id, image, category
 }) {
   
@@ -20,7 +20,10 @@ export default function JewelryItem ({
             <div>Price: <span>{price} bgn</span></div> */}
         
         </div>
-        
+            <div className={styles["jewelry-buttons"]}>
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
             <div className={styles["jewelry-likes"]}>
                 <div>14</div>
                 <button>&#10084;</button>
