@@ -71,6 +71,7 @@ button {
   border-radius: 5px;
   padding: 5px 10px;
   transition: 0.3s;
+  text-transform: uppercase;
 }
 
 button:hover {
@@ -78,6 +79,7 @@ button:hover {
   color: purple;
   border: 1px solid white;  
   transition: 0.3s;
+  cursor: pointer;
 }
 
 h1, h2 { line-height: 1.1; }
