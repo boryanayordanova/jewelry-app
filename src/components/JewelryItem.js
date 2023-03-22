@@ -1,14 +1,15 @@
 import styles from "./JewelryItem.module.scss";
-
+import { Link } from "react-router-dom";
 
 export default function JewelryItem ({
-    name, color, id, image, category
+    id, name, image, category, countLikes,
 }) {
   
     return (
         <>
         {/* <h1>Item</h1> */}
         <div className={styles["jewelry-item-container"]}>
+        <Link to={`/${id}`} />
         <div className={styles["jewelry-img"]}><img src={image} alt={name}/></div>
 
         <div className={styles["jewelry-item-data"]}>
@@ -22,8 +23,8 @@ export default function JewelryItem ({
         </div>
         
             <div className={styles["jewelry-likes"]}>
-                <div>14</div>
-                <button>&#10084;</button>
+                <div className={styles["jewelry-likes-num"]}>{countLikes}</div>
+                <button className={styles["jewelry-likes-btn"]}>&#10084;</button>
             </div>
 
     </div>

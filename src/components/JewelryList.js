@@ -83,6 +83,7 @@ export default function JewelryList ({
                 {jewelry.filter(valLoggedUser => location.pathname==='/my-jewelry').map(jew => (                                                 
                         <JewelryItemLoggedUser key={jew.id} {...jew} />     
                         )
+                        
                     )                                           
                 } 
 

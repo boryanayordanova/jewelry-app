@@ -30,10 +30,11 @@
         background: black;
         border: 1px solid white;
         padding: 50px 30px 50px;
+        left: 0;
+        right: 0;
 
         @media (min-width: 930px) {
             width: 30rem;
-            left: calc(50% - 15rem);
             border-radius: 14px;
         }
 

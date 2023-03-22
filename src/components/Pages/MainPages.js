@@ -28,8 +28,6 @@ export default function MainPages () {
         console.log("new je");
         console.log(newJewelry);
 
-        
-
         {FirebaseFetchData.getAll()
             .then(data => {    
                 const j = Object.keys(data).map(id => ({ ...data[id], id }));

@@ -8,6 +8,7 @@ export default function AboutPage() {
             <p>If you areisterested in handmade jewelry and enjoy creating them by themself, please register and show your ideas to your tribe.</p>
 
             <p>Everybody, registrated here can add his/hers handmade jewelries and exchnage experience with the others.</p>
+            
         </article>
     )
 }

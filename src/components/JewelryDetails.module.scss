@@ -1,0 +1,110 @@
+.jewelry-details {
+
+    .overlay {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // bottom: 0;
+        // z-index: 100;
+    
+        .backdrop {
+            // background-color: rgba(255, 255, 255, 0.75);
+            // height: 100vh;
+            // left: 0;
+            // position: fixed;
+            // top: 0;
+            // width: 100%;
+            // z-index: 20;
+        }
+        .jewelry-details-container {
+            width: 30rem;
+            // position: absolute;
+            position: relative;
+            max-height: 90vh;
+            margin: auto;
+            border-radius: 20px;
+            /* background-color: white; */
+            padding: 1rem;
+            box-shadow: 0 10px 230px rgba(206, 9, 209, 0.25);
+            z-index: 30;
+            margin-top: 20vh;
+            margin-top: 30px;
+            background: black;
+            background: rgba(6, 6, 6, 0.5);
+            border: 2px solid white;
+            padding: 50px 30px 50px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: left;
+            left: 0;
+            right: 0;
+    
+            @media (min-width: 930px) {
+                width: 60rem;
+                // left: calc(50% - 30rem);
+                border-radius: 14px;
+             
+            }
+
+            & > div {
+                width: 50%;
+            }
+
+            .btn-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .jewelry-details-img {
+
+                img {
+                    width: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                    display: block;
+                    height: 300px;
+                    // border: 1px solid purple;
+                }
+            }
+
+            .jewelry-details-data {
+                padding-left: 20px;
+                
+                h1 {
+                    padding: 0 0 20px;
+                    margin: 0;
+                    text-transform: uppercase;
+                     
+                     margin-block-start: 0;
+
+                }
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0;
+                    text-transform: capitalize;
+
+                    h2 {
+                        padding: 0;
+                        margin: 0;
+                        text-align: right;
+                        padding-left: 10px;
+                        font-size: 20px;
+                        line-height: 22px;
+                        text-transform: uppercase;
+                    }
+
+    
+                }
+            }
+        }
+    }
+}

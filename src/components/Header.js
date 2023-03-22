@@ -1,5 +1,7 @@
-import { Link, NavLink  } from "react-router-dom";
+import { Link, NavLink, Routes, Route } from "react-router-dom";
 import styles from "./Header.module.scss";
+// import { LoginPage } from "./Pages/LoginPage";
+// import { RegisterPage } from "./Pages/RegisterPage";
 
 export default function Header() {
     return (
@@ -22,6 +24,8 @@ export default function Header() {
                 </div>
 
             </div>
+
+
 
         </header>
         

@@ -1,12 +1,13 @@
 import * as request from "./Requester";
 // const baseUrl = 'http://localhost:3005/api/users';
-const baseUrl = 'https://jewelry-app-f122c-default-rtdb.europe-west1.firebasedatabase.app/jewelry.json'
-console.log(baseUrl);
+const baseUrl = 'https://jewelry-app-f122c-default-rtdb.europe-west1.firebasedatabase.app/jewelry'
+
 
 export const getAll = async () => {
 
     // const result = await request('GET', baseUrl);
-    const result = await request.get(baseUrl);
+
+    const result = await request.get(baseUrl.concat(".json"));
    
     console.log(result);
     return result;
@@ -23,9 +24,8 @@ export const create = async (jewelryData) => {
 
     console.log(jewelryData)
 
-    const result = await request.post(baseUrl, jewelryData);
+    const result = await request.post(baseUrl.concat(".json"), jewelryData);
 
-    
     console.log('FireBase posted data:')
 
     console.log(result);
@@ -47,6 +47,16 @@ export const create = async (jewelryData) => {
 
   
 };
+
+
+export const getOne = async (jewelryId) => {
+
+    const result = await request.get(`${baseUrl}/${jewelryId}`.concat(".json"));
+
+    console.log(result);
+    return result;
+
+}
 
 // export const remove = async (userId) => {
 //     const response = await fetch(`${baseUrl}/${userId}`, {

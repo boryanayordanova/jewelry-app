@@ -3,9 +3,10 @@ import { Routes, Route, NavLink } from "react-router-dom";
 import MainPages from "./Pages/MainPages";
 import AboutPage from "./Pages/AboutPage";
 import styles from "./Nav.module.scss";
+import { JewelryDetails } from "./JewelryDetails";
 
-
-
+import { LoginPage } from "./Pages/LoginPage";
+import { RegisterPage } from "./Pages/RegisterPage";
 
 export default function Nav () {
     return (
@@ -14,7 +15,7 @@ export default function Nav () {
             <ul>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/my-jewelry">My Trinkets</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/">All Jewelries</NavLink></li>
-                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/top-links">Top Liked</NavLink></li>
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/top-likes">Top Liked</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/earrings">Еarrings</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/bracelets">Bracelets</NavLink></li>
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/necklaces">Necklaces</NavLink></li>
@@ -26,14 +27,15 @@ export default function Nav () {
         </nav>
 
         <Routes>
-            <Route path="/my-jewelry" element={<MainPages />} />;
             <Route path="/" element={<MainPages />} />;
+            <Route path="/login" element={<LoginPage />} />;
+            <Route path="/register" element={<RegisterPage />} />;
+            <Route path="/my-jewelry" element={<MainPages />} />;
             <Route path="/earrings" element={<MainPages />} />;
             <Route path="/bracelets" element={<MainPages />} />;
             <Route path="/necklaces" element={<MainPages />} />;
-            {/* <Route path="/" element={<h2>Home P</h2>} />; */}
             <Route path="/about" element={<AboutPage />} />;
-            {/* <Route path="/about" element={<h2>About P</h2>} />; */}
+            <Route path="/:jewelryId" element={<JewelryDetails />} />;
             <Route path="/*" element={<h1>Page Not Found - Error 404</h1>} />;
         </Routes>
         </>

@@ -33,6 +33,16 @@
         z-index: -1;
     }
 
+    & > a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        // background: red;
+    }
+
     &:hover {
         background: purple;
         transition: 0.3s;
@@ -79,6 +89,9 @@
             display: flex;
             justify-content: center;
             padding-top: 10px;
+            z-index: 1;
+            width: auto;
+            margin: auto;
 
             button {
                 margin: 0 5px;
@@ -93,6 +106,7 @@
             margin-top: 20px;
             align-items: center; 
             transition: 0.3s;
+            z-index: 1;
         }
     }
 }

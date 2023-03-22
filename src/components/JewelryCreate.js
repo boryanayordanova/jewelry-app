@@ -14,6 +14,7 @@ export const JewelryCreate = ({
         category: "earrings",
         image: "http://via.placeholder.com/250x250",
         description: "",
+        countLikes: 1
     });
 
     const onSubmitCreateJewelryForm = (e) => {
