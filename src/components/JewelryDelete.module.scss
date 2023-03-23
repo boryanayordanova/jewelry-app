@@ -1,0 +1,68 @@
+.jewelry-delete {
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        margin: auto;
+        overflow: hidden;
+    
+        .backdrop {
+            background-color: rgba(255, 255, 255, 0.75);
+            height: 100vh;
+            left: 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 20;
+        }
+        .jewelry-delete-container {
+            // width: 30rem;
+            max-width: 500px;
+            position: absolute;
+            // position: relative;
+            max-height: 90vh;
+            margin: auto;
+            border-radius: 20px;
+            /* background-color: white; */
+            box-shadow: 0 10px 230px rgba(206, 9, 209, 0.25);
+            z-index: 30;
+            margin-top: 20vh;
+            background: purple;
+            border: 5px solid black;
+            padding: 50px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            left: 0;
+            right: 0;
+            text-align: center;
+    
+            @media (min-width: 930px) {
+                // border-radius: 14px;             
+            }
+
+            .btn-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+ 
+            .actions {
+                padding: 20px 0 0;
+
+                button {
+                    margin: 0 10px;
+                    padding: 10px 20px;
+                    font-size: 18px;
+                    line-height: 1.1;
+                }
+            }
+        }
+    }
+}

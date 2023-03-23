@@ -3,18 +3,23 @@ import { useState } from "react";
 import { JewelryCreate } from "./JewelryCreate";
 import JewelryItem from "./JewelryItem";
 import styles from "./JewelryList.module.scss";
-
+import { JewelryDelete } from "./JewelryDelete"
 import { useLocation } from 'react-router-dom';
 import JewelryItemLoggedUser from "./JewelryItemLoggedUser";
 
 export default function JewelryList ({
     jewelry,
-    dataFromList
-
+    dataFromList,
+    onJewelryDelete
     }) {
 
     const [showAddJewelry, setShowAddJewelry] = useState(false);
+    const [showDeleteJewelry, setShowDeleteJewelry] = useState(null);
+
     let location = useLocation();
+
+
+    //Add
     
     const onJewelryAddClick = () => {
         setShowAddJewelry(true);
@@ -24,28 +29,50 @@ export default function JewelryList ({
         setShowAddJewelry(false);
     };
 
-
     const getDataCreatedJewelryForm = (data) => {
-        console.log("List data:");
-        console.log(data);
+        // console.log("List data:");
+        // console.log(data);
         dataFromList(data);
         setShowAddJewelry(false)
     }
- 
+
+    // Delete
+
+    const onDeleteClickHandler = (id) => {
+        // console.log(id)
+        setShowDeleteJewelry(id);  
+   };
+
+  
+    const onCloseModalHandler = () => {
+        setShowDeleteJewelry(false);
+    }
+
+   const onDeleteModalHandler = () => {
+        // console.log("deleting active");
+        onJewelryDelete(showDeleteJewelry);
+        setShowDeleteJewelry(false);
+    };
+
       
         return (
             <>
-            {/* <h2>Jewelries List:</h2> */}
     
             {showAddJewelry &&
                     <JewelryCreate
-                        onCloseForm={onCloseFormHandler}                       
-                        // onSubmitCreateJewelryForm={onSubmitCreateJewelryHandler}
+                        onCloseForm={onCloseFormHandler}
                         dataCreatedJewelryForm={getDataCreatedJewelryForm}
 
                         // formChangeHandler={formChangeHandler}
                         // formErrors={formErrors}
                         // formValidate={formValidate}
+                    />
+            }
+
+            {showDeleteJewelry &&
+                    <JewelryDelete 
+                        onCloseModal={onCloseModalHandler}
+                        onDeleteModal={onDeleteModalHandler}
                     />
             }
     
@@ -81,9 +108,8 @@ export default function JewelryList ({
                 }     
 
                 {jewelry.filter(valLoggedUser => location.pathname==='/my-jewelry').map(jew => (                                                 
-                        <JewelryItemLoggedUser key={jew.id} {...jew} />     
+                        <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler}/>                             
                         )
-                        
                     )                                           
                 } 
 

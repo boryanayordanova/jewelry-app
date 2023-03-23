@@ -58,6 +58,15 @@ export const getOne = async (jewelryId) => {
 
 }
 
+
+export const remove = async (jewelryId) => {
+
+    const result = await request.del(`${baseUrl}/${jewelryId}`.concat(".json"));
+
+    console.log(result);
+    return result;
+
+}
 // export const remove = async (userId) => {
 //     const response = await fetch(`${baseUrl}/${userId}`, {
 //         method: 'DELETE'

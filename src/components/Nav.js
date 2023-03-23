@@ -31,6 +31,7 @@ export default function Nav () {
             <Route path="/login" element={<LoginPage />} />;
             <Route path="/register" element={<RegisterPage />} />;
             <Route path="/my-jewelry" element={<MainPages />} />;
+            <Route path="/top-likes" element={<h1>Top Likes</h1>} />;
             <Route path="/earrings" element={<MainPages />} />;
             <Route path="/bracelets" element={<MainPages />} />;
             <Route path="/necklaces" element={<MainPages />} />;

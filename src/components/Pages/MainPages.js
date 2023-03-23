@@ -41,11 +41,27 @@ export default function MainPages () {
 
     }
 
+    const dataDeleteModal = async (d) => {
+        console.log("dataDeleteModal");
+        console.log(d);
+        await FirebaseFetchData.remove(d);
+
+        setJewelry(state => state.filter(x => x.id !== d));
+    }
+
+    // const onUserDelete = async (userId) => {
+    //     // Delete from server
+      
+
+    //     // Delete from state
+    //     setUsers(state => state.filter(x => x._id !== userId));
+    // };
+
 
     return (
         <article>
             <h1>Jewelries List:</h1>
-            <JewelryList jewelry={jewelry} dataFromList={data}/>
+            <JewelryList jewelry={jewelry} dataFromList={data} onJewelryDelete={dataDeleteModal}/>
         </article>
     )
 
