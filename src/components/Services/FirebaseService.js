@@ -67,34 +67,16 @@ export const remove = async (jewelryId) => {
     return result;
 
 }
-// export const remove = async (userId) => {
-//     const response = await fetch(`${baseUrl}/${userId}`, {
-//         method: 'DELETE'
-//     });
 
-//     const result = await response.json();
+export const update = async (jewelryId, jewelryData) => {
+ 
+    // console.log("dannii")
+    // console.log(jewelryId)
+    // console.log(jewelryData)
+    
+    const result = await request.patch(`${baseUrl}/${jewelryId}`.concat(".json"), jewelryData);
 
-//     return result;
-// };
-
-// export const update = async (userId, userData) => {
-//     const { country, city, street, streetNumber, ...data } = userData;
-//     data.address = {
-//         country,
-//         city,
-//         street,
-//         streetNumber,
-//     };
-
-//     const response = await fetch(`${baseUrl}/${userId}`, {
-//         method: 'PUT',
-//         headers: {
-//             'content-type': 'application/json',
-//         },
-//         body: JSON.stringify(data)
-//     });
-
-//     const result = await response.json();
-
-//     return result.user;
-// };
+    // console.log("result");
+    // console.log(result);
+    return result;
+};

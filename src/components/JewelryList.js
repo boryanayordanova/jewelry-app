@@ -6,15 +6,21 @@ import styles from "./JewelryList.module.scss";
 import { JewelryDelete } from "./JewelryDelete"
 import { useLocation } from 'react-router-dom';
 import JewelryItemLoggedUser from "./JewelryItemLoggedUser";
+import * as FirebaseFetchData from './Services/FirebaseService';
 
 export default function JewelryList ({
     jewelry,
     dataFromList,
-    onJewelryDelete
+    onJewelryDelete,
+    dataFromUpdate,
+    //getDataUpdateJewelryForm,
+    keepIdEdit
     }) {
 
     const [showAddJewelry, setShowAddJewelry] = useState(false);
     const [showDeleteJewelry, setShowDeleteJewelry] = useState(null);
+    const [showEditJewelry, setShowEditJewelry] = useState(null);
+
 
     let location = useLocation();
 
@@ -27,13 +33,15 @@ export default function JewelryList ({
 
     const onCloseFormHandler = () => {      
         setShowAddJewelry(false);
+        setShowEditJewelry(false);
     };
 
     const getDataCreatedJewelryForm = (data) => {
-        // console.log("List data:");
+        console.log("getDataCreatedJewelryForm:");
         // console.log(data);
         dataFromList(data);
-        setShowAddJewelry(false)
+        setShowAddJewelry(false);
+        console.log("getDataCreatedJewelryForm____________ennd");
     }
 
     // Delete
@@ -43,7 +51,6 @@ export default function JewelryList ({
         setShowDeleteJewelry(id);  
    };
 
-  
     const onCloseModalHandler = () => {
         setShowDeleteJewelry(false);
     }
@@ -54,26 +61,79 @@ export default function JewelryList ({
         setShowDeleteJewelry(false);
     };
 
+
+    // Edit
+
+    const onEditHandler = async (id) => {
+        console.log("Edit Clicked ...");
+        console.log(id);
+
+        const jewData = await FirebaseFetchData.getOne(id);
+        
+        const combine = {jewData, id};
+        console.log(combine);
+        setShowEditJewelry(combine);
+
+        //console.log(jew);
+    
+        //keepIdEdit(id)
+        
+        console.log("Edit Clicked ..!end");
+        console.log("_____________");
+        //return id;
+
+
+    }
+
+  
+
+    const getDataUpdateJewelryForm = (data, myid) => {
+        console.log("getDataUpdatedJewelryForm:");
+        console.log(data);
+        // console.log(id);
+        //dataFromList(data);
+        // let i = onEditHandler(id);
+        dataFromUpdate(data, myid);
+        //setShowAddJewelry(false);
+        setShowEditJewelry(false);
+        console.log("getDataUpdatedJewelryForm:________end");
+    }
+
+
+
+
       
         return (
             <>
     
             {showAddJewelry &&
-                    <JewelryCreate
-                        onCloseForm={onCloseFormHandler}
-                        dataCreatedJewelryForm={getDataCreatedJewelryForm}
+                <JewelryCreate
+                    onCloseForm={onCloseFormHandler}
+                    dataCreatedJewelryForm={getDataCreatedJewelryForm}
+                    //getClickId={onEditHandler}
 
                         // formChangeHandler={formChangeHandler}
                         // formErrors={formErrors}
                         // formValidate={formValidate}
-                    />
+                />
             }
 
             {showDeleteJewelry &&
-                    <JewelryDelete 
-                        onCloseModal={onCloseModalHandler}
-                        onDeleteModal={onDeleteModalHandler}
-                    />
+                <JewelryDelete 
+                    onCloseModal={onCloseModalHandler}
+                    onDeleteModal={onDeleteModalHandler}
+                />
+            }
+
+            {showEditJewelry &&
+                <JewelryCreate
+                    jewelry={showEditJewelry}
+                    onCloseForm={onCloseFormHandler}
+                    dataCreatedJewelryForm={getDataUpdateJewelryForm}
+                    //getEditClickID={onEditHandler}
+                    // dataUpdatedJewelryForm={getDataUpdateJewelryForm}
+         
+                />
             }
     
 
@@ -108,7 +168,7 @@ export default function JewelryList ({
                 }     
 
                 {jewelry.filter(valLoggedUser => location.pathname==='/my-jewelry').map(jew => (                                                 
-                        <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler}/>                             
+                        <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler} onEditClick={onEditHandler} />                             
                         )
                     )                                           
                 } 

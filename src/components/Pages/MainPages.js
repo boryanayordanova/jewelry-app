@@ -19,7 +19,7 @@ export default function MainPages () {
             });
     }, []);
 
-    const data = async (d) => {
+    const dataList = async (d) => {
         console.log("data main");
         console.log(d);
 
@@ -49,19 +49,53 @@ export default function MainPages () {
         setJewelry(state => state.filter(x => x.id !== d));
     }
 
-    // const onUserDelete = async (userId) => {
-    //     // Delete from server
-      
+    const dataUpdate = async (jew, jid)  => {
+        //e.preventDefault();
+        console.log("data Edit....mAIN!!!!!!!!!!!!!!!!!!!!!!");
+        console.log(jew);
+        console.log(jid);
 
-    //     // Delete from state
-    //     setUsers(state => state.filter(x => x._id !== userId));
-    // };
+        // const data = Object.fromEntries(jew);
 
+        const updatedJewelry = await FirebaseFetchData.update(jid, jew);
+        //console.log(updatedJewelry);
+
+        //firebase doesn't return full object with all params, so we need to get it by get requst.
+        //setJewelry(state => state.map(x => x.id === jid ? updatedJewelry : x));
+        
+
+        {FirebaseFetchData.getAll()
+            .then(data => {    
+                const j = Object.keys(data).map(id => ({ ...data[id], id }));
+                console.log("j");
+                console.log(j);
+                j.reverse();            
+            setJewelry(j);            
+        })
+        .catch(err => {
+            console.log('Error' + err);
+        });}
+        
+
+                                        
+    }  
+    
+
+   
 
     return (
         <article>
             <h1>Jewelries List:</h1>
-            <JewelryList jewelry={jewelry} dataFromList={data} onJewelryDelete={dataDeleteModal}/>
+            <JewelryList 
+                jewelry={jewelry} 
+                dataFromList={dataList} 
+                onJewelryDelete={dataDeleteModal} 
+
+
+                getDataUpdateJewelryForm={dataUpdate} 
+                dataFromUpdate={dataUpdate}
+                
+            />
         </article>
     )
 

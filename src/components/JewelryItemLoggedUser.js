@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function JewelryItemLoggedUser ({
     id, name, image, category, countLikes,
-    onDeleteClick
+    onDeleteClick,
+    onEditClick
 }) {
 
 
@@ -13,13 +14,14 @@ export default function JewelryItemLoggedUser ({
         <>
         <div className={styles["jewelry-item-container"]} >
             <Link to={`/${id}`} />
+            <div>{id}</div>
             <div className={styles["jewelry-img"]}><img src={image} alt={name}/></div>
             <div className={styles["jewelry-item-data"]}>
                 <div className={styles["jewelry-name"]}>Name: <span>{name}</span></div>
                 <div>Category: <span>{category}</span></div>
             </div>
             <div className={styles["jewelry-buttons"]}>
-                <button>Edit</button>
+                <button onClick={() => onEditClick(id)}>Edit</button>
                 <button onClick={() => onDeleteClick(id)}>Delete</button>
             </div>
             <div className={styles["jewelry-likes"]}>
