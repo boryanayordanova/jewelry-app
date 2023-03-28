@@ -1,20 +1,55 @@
 import styles from "./RegisterPage.module.scss";
+import profileImage from '../_images/profile.png' // relative path to image 
+
+import {auth} from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+
+    const onRegisterSubmit = (e) => {
+        e.preventDefault();
+        //onSubmitHandler(values);
+        //console.log(values);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("userCredential Reg");
+                console.log(userCredential);
+                console.log(auth);
+                console.log(email);
+                console.log(password);
+                // <Navigate to="/my-jewelry"/>
+                navigate('/my-jewelry')
+            }).catch((error) => {
+                console.log(error);
+
+            });
+        };
+
+
     return (
         <>
             <article>
                 <div className={styles["article-auth"]}>
+                    <img src={profileImage} alt="Profile"/>
                     <h1>Register:</h1>
-
-                    <form className={styles["user-register-form"]}>
+                    <form className={styles["user-register-form"]} method="POST" onSubmit={onRegisterSubmit}>
                         <div className={styles["form-group"]}>
                             <label htmlFor="email">Email:</label>
                             <input
                                 id="email"
                                 name="email"
-                                type="text"
+                                type="email"
                                 placeholder="Enter User Email..."
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             {/* {formErrors.color &&
                         <p className="form-error">
@@ -23,20 +58,7 @@ export const RegisterPage = () => {
                     } */}
                         </div>
 
-                        <div className={styles["form-group"]}>
-                            <label htmlFor="phone">Phone:</label>
-                            <input
-                                id="phone"
-                                name="phone"
-                                type="tel"
-                                placeholder="Phone..."
-                            />
-                            {/* {formErrors.color &&
-                        <p className="form-error">
-                            {formErrors.color}
-                        </p>
-                    } */}
-                        </div>
+  
 
                         <div className={styles["form-group"]}>
                             <label htmlFor="password">Password:</label>
@@ -45,6 +67,8 @@ export const RegisterPage = () => {
                                 name="password"
                                 type="password"
                                 placeholder="Password..."
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             {/* {formErrors.color &&
                         <p className="form-error">
@@ -53,34 +77,7 @@ export const RegisterPage = () => {
                     } */}
                         </div>
 
-                        <div className={styles["form-group"]}>
-                            <label htmlFor="confirmPassword">
-                                Confirm Password:
-                            </label>
-                            <input
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                type="password"
-                                placeholder="Confirm Password..."
-                            />
-                            {/* {formErrors.color &&
-                        <p className="form-error">
-                            {formErrors.color}
-                        </p>
-                    } */}
-                        </div>
 
-                        <div className={styles["form-group"]}>
-                            <label htmlFor="image">Image Url:</label>
-                            {/* <input value={formValues.image} onChange={onChangeHandlerCreateuser} id="image" name="image" type="text" defaultValue={user?.image} placeholder="Place Image Here..." /> */}
-                            <input
-                                id="image"
-                                name="image"
-                                type="text"
-                                placeholder="Place Image Here..."
-                            />
-                            {/* <p className="form-error">image is not valid!</p> */}
-                        </div>
 
                         <div className={styles["form-actions"]}>
                             <button
@@ -88,8 +85,8 @@ export const RegisterPage = () => {
                                 className="btn"
                                 type="submit"
                             >
-                                {" "}
-                                Register{" "}
+
+                                Register
                             </button>
                         </div>
                     </form>

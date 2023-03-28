@@ -12,7 +12,7 @@ export const JewelryCreate = ({
     const [formValues, setformValues] = useState({
         // name: "",
         // color: "",
-        // category: "earrings",
+        category: "earrings",
         // image: "",
         // description: "",
         countLikes: 1
@@ -31,8 +31,6 @@ export const JewelryCreate = ({
         console.log("_____________")
        
     }
-
-
 
 
     const onChangeHandlerCreateJewelry = (e) => {

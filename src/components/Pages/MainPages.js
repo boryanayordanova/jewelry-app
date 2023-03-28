@@ -57,7 +57,8 @@ export default function MainPages () {
 
         // const data = Object.fromEntries(jew);
 
-        const updatedJewelry = await FirebaseFetchData.update(jid, jew);
+        //const updatedJewelry = await FirebaseFetchData.update(jid, jew);
+        await FirebaseFetchData.update(jid, jew);
         //console.log(updatedJewelry);
 
         //firebase doesn't return full object with all params, so we need to get it by get requst.

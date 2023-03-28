@@ -60,8 +60,8 @@
 
 article {
   max-width: 1000px;
-  margin: 5% auto;
-  padding: 0 20px;
+  margin: 0 auto 20px;
+  padding: 40px 20px;
 }
 
 button {

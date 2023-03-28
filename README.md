@@ -1,5 +1,9 @@
 packages needed:
 
-ipm i
-npm install firebase
-npm install sass
+##
+
+## ipm i
+## npm install react-router-dom
+## npm install firebase
+## npm install firebase react-auth-firebase
+## npm install sass
