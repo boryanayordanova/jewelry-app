@@ -40,6 +40,13 @@ export default function Header() {
             .catch((error) => console.log(error));
     };
 
+
+    // const contextValues = {
+    //         {authUser ? (
+    //             userMeil : authUser.email        
+    //         ) : ();
+    // };
+
     return (
         <>
         <header>
@@ -88,8 +95,13 @@ export default function Header() {
         <ul>
             {authUser ? (
                 <>
-                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/my-jewelry">My Trinkets</NavLink></li>
-                </>
+                {/* <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/my-jewelry/:userMail">My Trinkets</NavLink></li> */}
+                
+                {/* <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to={authUser.email}>My Trinkets</NavLink></li> */}
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to={`/my-jewelry/${authUser.email}`}>My Trinkets</NavLink></li>
+                
+                
+                </>    
             ) : 
             <>
             </>
@@ -106,7 +118,7 @@ export default function Header() {
     </nav>
 
 
-  
+
 
 
     {/* <AuthContext.Provider value={contextValues}> */}
@@ -114,7 +126,8 @@ export default function Header() {
         <Route path="/" element={<MainPages />} />;
         <Route path="/login" element={<LoginPage />} />;
         <Route path="/register" element={<RegisterPage />} />;
-        <Route path="/my-jewelry" element={<MainPages />} />;
+        {/* <Route path="/my-jewelry" element={<MainPages />} />; */}
+        <Route path="/my-jewelry/:userMail" element={<MainPages />} />;
         <Route path="/top-likes" element={<h1>Top Likes</h1>} />;
         <Route path="/earrings" element={<MainPages />} />;
         <Route path="/bracelets" element={<MainPages />} />;

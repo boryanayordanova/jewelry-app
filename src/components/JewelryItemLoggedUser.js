@@ -11,7 +11,7 @@ export default function JewelryItemLoggedUser ({
 
  
     return (
-        <>
+        <>        
         <div className={styles["jewelry-item-container"]} >
             <Link to={`/${id}`} />
             <div>{id}</div>

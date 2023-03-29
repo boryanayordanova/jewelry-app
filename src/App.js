@@ -11,31 +11,23 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 
 
 function App() {
+
     const [auth, setAuth] = useState({});
 
-	// const onLoginSubmit = async (e, data) => {
-	// 	e.preventDefault();
-    // 	console.log("login");
-	// 	// e.preventDefault();
-    // 	//console.log(Object.fromEntries(new FormData(e.target)));
-    //     console.log(data);
-	// 	signInWithEmailAndPassword(data)
-	// 	.then((userCredential) => {
-	// 		console.log("userCredential");
-	// 		console.log(userCredential);
-	// 	});
-    // } 
 
-	const data = useContext(AuthContext);
+
+	// const contextValues = {
+
+    // };
 
     return (
-        <AuthContext.Provider value={{data}}>
+        // <AuthContext.Provider value={contextValues}>
 		
             <div className="App">
                 <Header />
                 <Footer />
             </div>
-        </AuthContext.Provider>
+        // </AuthContext.Provider>
 		
     );
 }

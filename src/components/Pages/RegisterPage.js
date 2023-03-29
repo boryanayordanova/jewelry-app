@@ -21,12 +21,11 @@ export const RegisterPage = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log("userCredential Reg");
-                console.log(userCredential);
-                console.log(auth);
+                console.log(auth.currentUser.accessToken);
                 console.log(email);
                 console.log(password);
                 // <Navigate to="/my-jewelry"/>
-                navigate('/my-jewelry')
+                navigate(`/my-jewelry/${email}`);
             }).catch((error) => {
                 console.log(error);
 

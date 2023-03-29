@@ -15,16 +15,14 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 // };
 
 
-export const LoginPage = ({loginMeilVal}) => {
+export const LoginPage = () => {
 
     const navigate = useNavigate();
-
 
 
     // const [values, setValues] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
 
 
 
@@ -34,14 +32,13 @@ export const LoginPage = ({loginMeilVal}) => {
         //console.log(values);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                console.log("userCredential Login:");
-                console.log(userCredential);
-                console.log(auth);
+                console.log("userCredential Login:");     
+                console.log(auth.currentUser.accessToken);    
+                console.log(auth.currentUser.uid);    
                 console.log(email);
                 console.log(password);
-                navigate('/my-jewelry')
-                const AuthContext = createContext({ email });
-                loginMeilVal(email);
+                navigate(`/my-jewelry/${email}`);                
+                // const AuthContext = createContext({ email });               
             }).catch((error) => {
                 console.log(error);
                                 

@@ -15,7 +15,8 @@ export const JewelryCreate = ({
         category: "earrings",
         // image: "",
         // description: "",
-        countLikes: 1
+        countLikes: 1,
+        //owner: jewelry?.jewData.owner
     });
 
     const onSubmitJewelryForm = (e, id) => {

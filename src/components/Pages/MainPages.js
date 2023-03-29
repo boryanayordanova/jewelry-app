@@ -1,11 +1,17 @@
 import JewelryList from "../JewelryList";
 import { useState, useEffect } from "react";
 import * as FirebaseFetchData from '../Services/FirebaseService';
-
+import { useParams } from "react-router-dom";
 
 export default function MainPages () {
 
     const [jewelry, setJewelry] = useState([]);
+
+    const { userMail } = useParams();
+    console.log("userMail");
+    console.log(userMail);
+
+
 
     useEffect(() => {
         FirebaseFetchData.getAll()            
@@ -76,30 +82,27 @@ export default function MainPages () {
         .catch(err => {
             console.log('Error' + err);
         });}
-        
-
                                         
     }  
     
 
-   
-
     return (
         <article>
-            <h1>Jewelries List:</h1>
+            {userMail ?
+                <h1>Your Jewelries:</h1>
+                : 
+                <h1>Jewelries:</h1>
+            }
             <JewelryList 
                 jewelry={jewelry} 
                 dataFromList={dataList} 
                 onJewelryDelete={dataDeleteModal} 
 
-
                 getDataUpdateJewelryForm={dataUpdate} 
-                dataFromUpdate={dataUpdate}
-                
+                dataFromUpdate={dataUpdate}  
+                jewelryOwner={userMail}              
             />
         </article>
     )
-
-
 
 }

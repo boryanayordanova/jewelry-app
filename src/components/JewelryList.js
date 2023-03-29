@@ -7,14 +7,15 @@ import { JewelryDelete } from "./JewelryDelete"
 import { useLocation } from 'react-router-dom';
 import JewelryItemLoggedUser from "./JewelryItemLoggedUser";
 import * as FirebaseFetchData from './Services/FirebaseService';
+import { useParams } from "react-router-dom";
 
 export default function JewelryList ({
     jewelry,
     dataFromList,
     onJewelryDelete,
     dataFromUpdate,
+    jewelryOwner,
     //getDataUpdateJewelryForm,
-    keepIdEdit
     }) {
 
     const [showAddJewelry, setShowAddJewelry] = useState(false);
@@ -23,6 +24,10 @@ export default function JewelryList ({
 
 
     let location = useLocation();
+
+    // const { userMail } = useParams();
+    // console.log("userMail List");
+    // console.log(userMail);
 
 
     //Add
@@ -39,7 +44,10 @@ export default function JewelryList ({
     const getDataCreatedJewelryForm = (data) => {
         console.log("getDataCreatedJewelryForm:");
         // console.log(data);
-        dataFromList(data);
+        dataFromList(data); 
+        
+        // console.log("Own");
+        // console.log(jewelryOwner);
         setShowAddJewelry(false);
         console.log("getDataCreatedJewelryForm____________ennd");
     }
@@ -76,7 +84,7 @@ export default function JewelryList ({
 
         //console.log(jew);
     
-        //keepIdEdit(id)
+ 
         
         console.log("Edit Clicked ..!end");
         console.log("_____________");
@@ -137,8 +145,11 @@ export default function JewelryList ({
             }
     
 
-            
-            <button className={styles["btn-add-new"]} onClick={onJewelryAddClick}>Add New</button>
+            {jewelryOwner && 
+                <button className={styles["btn-add-new"]} onClick={onJewelryAddClick}>Add New</button>               
+            }
+
+
     
             <div className={styles["jewelry-items-container"]}>
 
@@ -167,15 +178,21 @@ export default function JewelryList ({
                     )                                           
                 }     
 
-                {jewelry.filter(valLoggedUser => location.pathname==='/my-jewelry').map(jew => (                                                 
-                        <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler} onEditClick={onEditHandler} />                             
+
+                {jewelry.filter(valMine => (valMine.owner === jewelryOwner && location.pathname.includes('/my-jewelry/'))).map(jew => (                       
+                        <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler} onEditClick={onEditHandler}/>
                         )
-                    )                                           
+                    )                                                              
                 } 
+
+  
+                       
 
                 {jewelry.lenght === 0 && (
                     <h3>None Jewelry yet</h3>
                 )}
+
+            
                    
             </div>
     
