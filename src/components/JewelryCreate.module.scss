@@ -104,6 +104,13 @@
                 }
             }
 
+            .form-error {
+                color: red;
+                text-align: left;
+                padding: 0;
+                margin: 0;
+            }
+
             #form-actions {
                 display: flex;
                 justify-content: center;

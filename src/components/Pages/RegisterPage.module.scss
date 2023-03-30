@@ -52,4 +52,17 @@
             }
         }
     }
+
+    .login-now {
+        
+        display: flex;
+        justify-content: end;
+        
+
+        a {
+            color: #0d9aff;
+            text-decoration: none;
+            padding-left: 5px;
+        }
+    }
 }

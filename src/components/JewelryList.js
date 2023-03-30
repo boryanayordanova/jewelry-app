@@ -15,6 +15,7 @@ export default function JewelryList ({
     onJewelryDelete,
     dataFromUpdate,
     jewelryOwner,
+    
     //getDataUpdateJewelryForm,
     }) {
 
@@ -118,6 +119,7 @@ export default function JewelryList ({
                 <JewelryCreate
                     onCloseForm={onCloseFormHandler}
                     dataCreatedJewelryForm={getDataCreatedJewelryForm}
+                    createdOwner={jewelryOwner}
                     //getClickId={onEditHandler}
 
                         // formChangeHandler={formChangeHandler}

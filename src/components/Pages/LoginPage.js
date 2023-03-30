@@ -19,17 +19,13 @@ export const LoginPage = () => {
 
     const navigate = useNavigate();
 
-
-    // const [values, setValues] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [error, setError] = useState(null);
 
 
     const onLoginSubmit = (e) => {
         e.preventDefault();
-        //onSubmitHandler(values);
-        //console.log(values);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log("userCredential Login:");     
@@ -37,18 +33,28 @@ export const LoginPage = () => {
                 console.log(auth.currentUser.uid);    
                 console.log(email);
                 console.log(password);
-                navigate(`/my-jewelry/${email}`);                
-                // const AuthContext = createContext({ email });               
+                navigate(`/my-jewelry/${email}`);                                             
             }).catch((error) => {
                 console.log(error);
+                // alert(error.message);
+                setError(error.message);
+                // switch(error.code) {
+                //     case 'auth/invalid-email':
+                //           alert('Invalid email!')                          
+                //           break;
+                //  }
                                 
             });
-        };
+    };
 
+
+    
     return (
         <>
             <article>
-                <div className={styles["article-auth"]}>
+            
+            <div className={styles["article-auth"]} >
+            
                     <img src={profileImage} alt="Profile"/>
                     <h1>Login:</h1>
                     <form className={styles["user-register-form"]} method="POST" onSubmit={onLoginSubmit}>
@@ -62,11 +68,8 @@ export const LoginPage = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            {/* {formErrors.color &&
-                            <p className="form-error">
-                                {formErrors.color}
-                            </p>
-                        } */}
+
+                                
                         </div>
 
                         <div className={styles["form-group"]}>
@@ -79,11 +82,7 @@ export const LoginPage = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            {/* {formErrors.color &&
-                        <p className="form-error">
-                            {formErrors.color}
-                        </p>
-                    } */}
+                           
                         </div>
 
                         <div className={styles["form-actions"]}>
@@ -97,10 +96,14 @@ export const LoginPage = () => {
                         </div>
                     </form>
                     
-                    <div className={styles["reg-now"]}>You don't have a registration? <Link to="/register"> Register Now</Link></div>
+                    <div className={styles["reg-now"]}>You don't have a registration? - <Link to="/register"> Register Now</Link></div>
 
                     
-                
+                    {error &&
+                        <p className="form-error" style={ { background: 'rgb(255 0 0 / 30%)', padding : 20,  'border-radius': 10, border: "1px solid red" }  }>
+                            {error}
+                        </p>
+                    }
                 </div>
             </article>
         </>

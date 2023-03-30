@@ -11,8 +11,8 @@ export default function JewelryItem ({
             <Link to={`/${id}`} />
             <div className={styles["jewelry-img"]}><img src={image} alt={name}/></div>
             <div className={styles["jewelry-item-data"]}>
-                <div className={styles["jewelry-name"]}>Name: <span>{name}</span></div>
-                <div>Category: <span>{category}</span></div>
+                <div className={styles["jewelry-name"]}><p>Name:</p><span>{name}</span></div>
+                <div><p>Category:</p><span>{category}</span></div>
             </div>
             
             <div className={styles["jewelry-likes"]}>

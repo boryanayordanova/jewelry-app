@@ -74,8 +74,8 @@ export default function MainPages () {
         {FirebaseFetchData.getAll()
             .then(data => {    
                 const j = Object.keys(data).map(id => ({ ...data[id], id }));
-                console.log("j");
-                console.log(j);
+                // console.log("j");
+                // console.log(j);
                 j.reverse();            
             setJewelry(j);            
         })
@@ -89,7 +89,7 @@ export default function MainPages () {
     return (
         <article>
             {userMail ?
-                <h1>Your Jewelries:</h1>
+                <h1>Your Trinkets, {userMail}:</h1>
                 : 
                 <h1>Jewelries:</h1>
             }

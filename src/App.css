@@ -72,6 +72,7 @@ button {
   padding: 5px 10px;
   transition: 0.3s;
   text-transform: uppercase;
+  box-shadow: 6px 6px 6px black;
 }
 
 button:hover {
