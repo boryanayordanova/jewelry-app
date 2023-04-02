@@ -1,0 +1,29 @@
+.jewelry-likes {
+    display: flex;
+    padding-top: 10px;
+    justify-content: space-between;
+    border-top: 2px solid purple;
+    margin-top: 20px;
+    align-items: center;
+    transition: 0.3s;
+    z-index: 1;
+
+    // &:hover {
+    //     border-top: 1px solid white;
+    // }
+    button {
+   
+        &.liked {
+            background: deepskyblue;
+        }
+      }
+}
+
+
+.jewelry-item-container {
+    .jewelry-likes {
+        &:hover {
+            border-top: 2px solid white;
+        }
+    }
+}

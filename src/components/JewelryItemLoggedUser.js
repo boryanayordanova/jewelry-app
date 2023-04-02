@@ -26,7 +26,7 @@ export default function JewelryItemLoggedUser ({
             </div>
             <div className={styles["jewelry-likes"]}>
                 <div className={styles["jewelry-likes-num"]}>{countLikes}</div>
-                <button className={styles["jewelry-likes-btn"]}>&#10084;</button>
+                <div className={styles["jewelry-likes-btn"]}>| Likes</div>
             </div>
         </div>
     </>

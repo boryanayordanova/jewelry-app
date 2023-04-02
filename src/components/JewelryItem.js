@@ -1,5 +1,7 @@
 import styles from "./JewelryItem.module.scss";
 import { Link } from "react-router-dom";
+import { Likes } from "./Likes";
+
 
 export default function JewelryItem ({
     id, name, image, category, countLikes,
@@ -15,10 +17,11 @@ export default function JewelryItem ({
                 <div><p>Category:</p><span>{category}</span></div>
             </div>
             
-            <div className={styles["jewelry-likes"]}>
+            {/* <div className={styles["jewelry-likes"]}>
                 <div className={styles["jewelry-likes-num"]}>{countLikes}</div>
                 <button className={styles["jewelry-likes-btn"]}>&#10084;</button>
-            </div>
+            </div> */}
+                <Likes itemLikes={countLikes}/>
         </div>
     </>
     );

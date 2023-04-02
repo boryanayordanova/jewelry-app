@@ -4,6 +4,8 @@ import AboutPage from "./Pages/AboutPage";
 import { JewelryDetails } from "./JewelryDetails";
 import { LoginPage } from "./Pages/LoginPage";
 import { RegisterPage } from "./Pages/RegisterPage";
+import { TopLikes } from "./Pages/TopLikes";
+
 
 import { AuthContext } from "./contexts/AuthContext";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -41,11 +43,6 @@ export default function Header() {
     };
 
 
-    // const contextValues = {
-    //         {authUser ? (
-    //             userMeil : authUser.email        
-    //         ) : ();
-    // };
 
     return (
         <>
@@ -121,14 +118,14 @@ export default function Header() {
 
 
 
-    {/* <AuthContext.Provider value={contextValues}> */}
+    <AuthContext.Provider value={authUser}>
     <Routes>
         <Route path="/" element={<MainPages />} />;
         <Route path="/login" element={<LoginPage />} />;
         <Route path="/register" element={<RegisterPage />} />;
         {/* <Route path="/my-jewelry" element={<MainPages />} />; */}
         <Route path="/my-jewelry/:userMail" element={<MainPages />} />;
-        <Route path="/top-likes" element={<h1>Top Likes</h1>} />;
+        <Route path="/top-likes" element={<TopLikes />}/>;
         <Route path="/earrings" element={<MainPages />} />;
         <Route path="/bracelets" element={<MainPages />} />;
         <Route path="/necklaces" element={<MainPages />} />;
@@ -136,7 +133,7 @@ export default function Header() {
         <Route path="/:jewelryId" element={<JewelryDetails />} />;
         <Route path="/*" element={<h1>Page Not Found - Error 404</h1>} />;
     </Routes>
-    {/* </AuthContext.Provider> */}
+    </AuthContext.Provider>
     </>
     );
 }
