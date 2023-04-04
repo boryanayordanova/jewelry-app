@@ -4,7 +4,7 @@ import { Likes } from "./Likes";
 
 
 export default function JewelryItem ({
-    id, name, image, category, countLikes,
+    id, name, image, category, countLikes, likedBy
 }) {
   
     return (
@@ -21,7 +21,7 @@ export default function JewelryItem ({
                 <div className={styles["jewelry-likes-num"]}>{countLikes}</div>
                 <button className={styles["jewelry-likes-btn"]}>&#10084;</button>
             </div> */}
-                <Likes itemLikes={countLikes}/>
+                <Likes itemLikes={countLikes} idItemForLike={id} itemLikedBy={likedBy}/>
         </div>
     </>
     );

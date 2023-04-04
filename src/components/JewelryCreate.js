@@ -31,27 +31,11 @@ export const JewelryCreate = ({
         console.log("formValues:");
         console.log(formValues);
 
-        // dataCreatedJewelryForm(formValues, id);
-        
-        
-        //dataCreatedJewelryForm(formValues , id);
-
-        
-        // {!formValues.name || !formValues.color || !formValues.category || !formValues.image || !formValues.description ?
-        //     alert('Please fill the form')           
-        //     :       
-        //     dataCreatedJewelryForm(formValues, id);    
-        // }
-
     
-        // console.log("asdasd");
-        // const value = e.target.value;
-        // console.log(value);
         const errors = {};
         console.log(errors);
         console.log(formValues);
         console.log(formValues.name);
-        // console.log(formValues.name.value);
         console.log(formValues.color);
         console.log(formValues.category);
         console.log(formValues.image);
@@ -89,11 +73,7 @@ export const JewelryCreate = ({
             errors.image = "Please paste an image url.";
         }
 
-        // if (e.target.name === "description" && (value.length === 0)) {
-        //     errors.description =
-        //         "Please add some description, like phone number, mail or any other addition info aboout the jewelry.";
-        // }
-          
+
 
         
         {

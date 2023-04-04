@@ -42,7 +42,27 @@ export default function Header() {
             .catch((error) => console.log(error));
     };
 
+    
+    // const contextValues = {
+    //     // userId: auth.authUser.id,
+    //     // token: auth.authUser.accessToken,
+    //     // userEmail: authUser.email,
+        
+    //     // isAuthenticated: !!auth.authUser.accessToken,
+    // }
 
+
+
+    let contextMail = "";
+
+   {{authUser ?
+        // <h1>{authUser.email}</h1>
+        contextMail = authUser.email           
+        :
+        // <h1>Loading...</h1>
+        <></>
+    }
+}
 
     return (
         <>
@@ -90,15 +110,8 @@ export default function Header() {
         
         <nav className={styles.nav}>
         <ul>
-            {authUser ? (
-                <>
-                {/* <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to="/my-jewelry/:userMail">My Trinkets</NavLink></li> */}
-                
-                {/* <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to={authUser.email}>My Trinkets</NavLink></li> */}
-                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to={`/my-jewelry/${authUser.email}`}>My Trinkets</NavLink></li>
-                
-                
-                </>    
+            {authUser ? (                            
+                <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to={`/my-jewelry/${authUser.email}`}>My Trinkets</NavLink></li>                                                 
             ) : 
             <>
             </>
@@ -114,11 +127,16 @@ export default function Header() {
         </ul>
     </nav>
 
+    {/* {authUser ?
+        // <h1>{authUser.email}</h1>
+        contextMail = authUser.email           
+        :
+        // <h1>Loading...</h1>
+        <></>
+} */}
 
 
-
-
-    <AuthContext.Provider value={authUser}>
+    <AuthContext.Provider value={contextMail}>
     <Routes>
         <Route path="/" element={<MainPages />} />;
         <Route path="/login" element={<LoginPage />} />;

@@ -53,7 +53,7 @@ export const getOne = async (jewelryId) => {
 
     const result = await request.get(`${baseUrl}/${jewelryId}`.concat(".json"));
 
-    console.log(result);
+    // console.log(result);
     return result;
 
 }
@@ -75,6 +75,20 @@ export const update = async (jewelryId, jewelryData) => {
     // console.log(jewelryData)
     
     const result = await request.patch(`${baseUrl}/${jewelryId}`.concat(".json"), jewelryData);
+
+    // console.log("result");
+    // console.log(result);
+    return result;
+};
+
+
+export const like = async (jewelryId, userMail) => {
+ 
+    // console.log("dannii")
+    // console.log(jewelryId)
+    // console.log(jewelryData)
+    
+    const result = await request.patch(`${baseUrl}/${jewelryId}`.concat(".json"), userMail);
 
     // console.log("result");
     // console.log(result);
