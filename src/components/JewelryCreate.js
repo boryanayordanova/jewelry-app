@@ -13,7 +13,8 @@ export const JewelryCreate = ({
         // category: "earrings",
         // image: "",
         // description: "",
-        countLikes: 1,
+        likedBy: "",
+        countLikes: 0,
         owner: createdOwner,
     });
 
