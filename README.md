@@ -10,6 +10,8 @@ _____________________________
 
 # Documentation:
 
+![Jewelry-Ideas-image](https://github.com/boryanayordanova/jewelry-app/blob/master/public/Jewelry-Ideas.png?raw=true)
+
 # App.js
 
 
