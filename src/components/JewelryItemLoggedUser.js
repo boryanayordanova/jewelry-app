@@ -9,9 +9,8 @@ export default function JewelryItemLoggedUser ({
 }) {
 
 
- 
     return (
-        <>        
+
         <div className={styles["jewelry-item-container"]} >
             <Link to={`/${id}`} />
             <div>{id}</div>
@@ -29,6 +28,6 @@ export default function JewelryItemLoggedUser ({
                 <div className={styles["jewelry-likes-btn"]}>| Likes</div>
             </div>
         </div>
-    </>
+    
     );
 }

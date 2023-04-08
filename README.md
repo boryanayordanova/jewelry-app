@@ -22,9 +22,9 @@ _____________________________
 
 # Header.js
 
-- Added check if the user is authentificated and **NavLink**
+- Added check if the user is authenticated and **NavLink**
 
-    - If the user **IS** authentificated
+    - If the user **IS** authenticated
 
         - Logout
         - My Trinkets (for the specific user) 
@@ -35,7 +35,7 @@ _____________________________
         - Necklaces
         - About
 
-    - If the uer **IS NOT** authentificated
+    - If the uer **IS NOT** authenticated
 
         - Login
         - Register

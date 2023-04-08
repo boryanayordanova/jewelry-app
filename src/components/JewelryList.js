@@ -7,7 +7,6 @@ import { JewelryDelete } from "./JewelryDelete"
 import { useLocation } from 'react-router-dom';
 import JewelryItemLoggedUser from "./JewelryItemLoggedUser";
 import * as FirebaseFetchData from './Services/FirebaseService';
-import { useParams } from "react-router-dom";
 
 export default function JewelryList ({
     jewelry,
@@ -110,8 +109,12 @@ export default function JewelryList ({
 
 
 
-
-      
+    // const AllJews = jewelry.filter(valAll => location.pathname==='/');
+    // const Earrings = jewelry.filter(valEar => (valEar.category === 'earrings' && location.pathname==='/earrings'));
+    // const Necklaces = jewelry.filter(valNeck => (valNeck.category === 'necklace' && location.pathname==='/necklaces'));
+    // const Bracelets = jewelry.filter(valBra => (valBra.category === 'bracelet' && location.pathname==='/bracelets'));
+    const mineJews = jewelry.filter(valMine => (valMine.owner === jewelryOwner && location.pathname.includes('/my-jewelry/')));
+    
         return (
             <>
     
@@ -154,41 +157,54 @@ export default function JewelryList ({
 
     
             <div className={styles["jewelry-items-container"]}>
-
+                
                 {jewelry.filter(valEar => (valEar.category === 'earrings' && location.pathname==='/earrings')).map(jew => (                   
                        <JewelryItem key={jew.id} {...jew} />                            
                         )
-                    )                                           
+                    )
                 }  
 
                 {jewelry.filter(valNeck => (valNeck.category === 'necklace' && location.pathname==='/necklaces')).map(jew => (                                                 
                         <JewelryItem key={jew.id} {...jew} />     
                         )
-                    )                                           
+                    )
                 }  
 
                 {jewelry.filter(valBra => (valBra.category === 'bracelet' && location.pathname==='/bracelets')).map(jew => (                                                 
                         <JewelryItem key={jew.id} {...jew} />     
                         )
-                    )                                           
+                    )
                 }    
 
 
                 {jewelry.filter(valAll => location.pathname==='/').map(jew => (                                                 
                         <JewelryItem key={jew.id} {...jew} />     
                         )
-                    )                                           
+                    )
                 }     
 
-
-                {jewelry.filter(valMine => (valMine.owner === jewelryOwner && location.pathname.includes('/my-jewelry/'))).map(jew => (                       
+                
+                {/* {jewelry.filter(valMine => (valMine.owner === jewelryOwner && location.pathname.includes('/my-jewelry/'))).map(jew => (                       
                         <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler} onEditClick={onEditHandler}/>
                         )
-                    )                                                              
-                } 
+                    )
+                }   */}
+               
 
-  
-                       
+                {mineJews.length > 0 ?
+                    mineJews.map(jew => (                       
+                        <JewelryItemLoggedUser key={jew.id} {...jew}  onDeleteClick={onDeleteClickHandler} onEditClick={onEditHandler}/>
+                        )
+                    )  
+                    :
+                    <>
+                    {location.pathname.includes('/my-jewelry/') &&
+                        <p>None Trinkets yet, please add some...</p>
+                    }
+                    </>
+                }
+                
+ 
 
                 {jewelry.lenght === 0 && (
                     <h3>None Jewelry yet</h3>
