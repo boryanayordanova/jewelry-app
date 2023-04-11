@@ -1,21 +1,42 @@
 import * as request from "./Requester";
 // const baseUrl = 'http://localhost:3005/api/users';
-const baseUrl = 'https://jewelry-app-f122c-default-rtdb.europe-west1.firebasedatabase.app/jewelry'
+import { useNavigate } from "react-router-dom";
+import {auth} from "../../firebase"
+import { signOut } from "firebase/auth";
+const baseUrl = 'https://jewelry-app-f122c-default-rtdb.europe-west1.firebasedatabase.app/jewelry';
 
 
 export const getAll = async () => {
+    // 
 
     // const result = await request('GET', baseUrl);
 
     const result = await request.get(baseUrl.concat(".json"));
    
     console.log(result);
-    return result;
+   
+
+    if(result.error === "Permission denied"){      
+        signOut(auth)
+            .then(() => {
+                console.log("sign out succesful");
+                const navigate = useNavigate();
+                navigate("/")
+            })
+            .catch((error) => console.log(error));
+            return;
+    }else {
+        return result;
+
+    }
     
     // const response = await fetch(baseUrl);
     // const result = await response.json();
     // return result;
+
+
 };
+
 
 
 export const create = async (jewelryData) => {

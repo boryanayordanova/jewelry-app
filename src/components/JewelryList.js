@@ -18,6 +18,7 @@ export default function JewelryList ({
     //getDataUpdateJewelryForm,
     }) {
 
+    // modals:    
     const [showAddJewelry, setShowAddJewelry] = useState(false);
     const [showDeleteJewelry, setShowDeleteJewelry] = useState(null);
     const [showEditJewelry, setShowEditJewelry] = useState(null);

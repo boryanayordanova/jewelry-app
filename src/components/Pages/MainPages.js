@@ -11,8 +11,6 @@ export default function MainPages () {
     console.log("userMail");
     console.log(userMail);
 
-
-
     useEffect(() => {
         FirebaseFetchData.getAll()            
             .then(data => {                
@@ -24,6 +22,7 @@ export default function MainPages () {
                 console.log('Error' + err);
             });
     }, []);
+
 
     const dataList = async (d) => {
         console.log("data main");
