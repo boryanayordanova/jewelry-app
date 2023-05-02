@@ -17,6 +17,7 @@ import styles from "./Header.module.scss";
 export default function Header() {
 
     const [authUser, setAuthUser] = useState(null);
+    const [isActiveNav, setIsActiveNav] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -55,14 +56,20 @@ export default function Header() {
 
     let contextMail = "";
 
-   {{authUser ?
+    {{authUser ?
         // <h1>{authUser.email}</h1>
         contextMail = authUser.email           
         :
         // <h1>Loading...</h1>
         <></>
-    }
-}
+    }}
+
+    const handleClickNav = event => {
+        // 👇️ toggle isActive state on click
+        console.log("clickk");
+        // setIsActiveNav(current => !current);
+        setIsActiveNav(!isActiveNav);
+      };
 
     return (
         <>
@@ -71,7 +78,7 @@ export default function Header() {
                 <h1 className={styles.mainHeadline}>
                     Jewelry Ideas <span>Exchange</span>
                 </h1>
-            </Link>
+            </Link>            
 
             {/* <AuthDetails /> */}
 
@@ -108,7 +115,15 @@ export default function Header() {
 
         </header>
         
-        <nav className={styles.nav}>
+        {/* <nav className={styles.nav} > */}
+        <nav className={!isActiveNav ? styles['nav'] : styles['active']} onClick={handleClickNav}>
+
+        <div className={styles['burger']} >
+            <div className={styles["bar"]}></div>
+            <div className={styles["bar"]}></div>
+            <div className={styles["bar"]}></div>            
+        </div>
+
         <ul>
             {authUser ? (                            
                 <li><NavLink style={({isActive}) => ({color: isActive ? "deepskyblue" : "white"})} to={`/my-jewelry/${authUser.email}`}>My Trinkets</NavLink></li>                                                 

@@ -5,6 +5,11 @@
 - npm install firebase
 - npm install firebase react-auth-firebase
 - npm install sass
+- npm install -g firebase-tools
+- firebase login
+- firebase init
+- npm run build
+- firebase deploy
 
 _____________________________
 

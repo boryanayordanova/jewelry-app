@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import {auth} from "../../firebase"
 import { signOut } from "firebase/auth";
 const baseUrl = 'https://jewelry-app-f122c-default-rtdb.europe-west1.firebasedatabase.app/jewelry';
+console.log(process.env.NODE_ENV); //development
 
-
-export const getAll = async () => {
-    // 
+export const getAll = async () => {    
 
     // const result = await request('GET', baseUrl);
 

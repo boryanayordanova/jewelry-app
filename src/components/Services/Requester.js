@@ -20,6 +20,8 @@ const request = async (method, url, data) => {
         }
     }
 
+    // add token to the headers
+
     // if (token) {
     //     options.headers = {
     //         ...options.headers,

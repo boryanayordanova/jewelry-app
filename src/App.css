@@ -67,6 +67,7 @@ article {
 button {
   background: none;
   color: white;
+  background: rgba(0,0,0,0.2);
   border: 1px solid white;  
   border-radius: 5px;
   padding: 5px 10px;

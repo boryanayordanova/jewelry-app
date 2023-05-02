@@ -18,14 +18,14 @@
             // z-index: 20;
         }
         .jewelry-details-container {
-            width: 30rem;
+            
             // position: absolute;
             position: relative;
             max-height: 90vh;
             margin: auto;
             border-radius: 20px;
             /* background-color: white; */
-            padding: 1rem;
+            padding: 10px;
             box-shadow: 0 10px 230px rgba(206, 9, 209, 0.25);
             z-index: 30;
             margin-top: 20vh;
@@ -40,22 +40,33 @@
             text-align: left;
             left: 0;
             right: 0;
+           
     
-            @media (min-width: 930px) {
-                width: 60rem;
+            @media (max-width: 768px) {                
                 // left: calc(50% - 30rem);
+                flex-direction: column;
                 border-radius: 14px;
+                padding: 0;
              
             }
 
             & > div {
                 width: 50%;
+                @media (max-width: 768px) {
+                    width: 100%;
+                    padding: 0;
+                }
             }
 
             .btn-close {
                 position: absolute;
                 top: 20px;
                 right: 20px;
+                @media (max-width: 768px) {
+                    top: 10px;
+                    right: 10px;
+                    background: rgba(0,0,0,0.2);
+                }
 
                 &:hover {
                     cursor: pointer;
@@ -71,11 +82,19 @@
                     display: block;
                     height: 300px;
                     // border: 1px solid purple;
+                    @media (max-width: 768px) {
+                        border-radius: 10px 10px 0 0;
+                    }
                 }
             }
 
             .jewelry-details-data {
                 padding-left: 20px;
+                @media (max-width: 768px) {
+                    padding-left: 0;
+                    padding: 10px;
+                    width: calc(100% - 20px);
+                }
                 
                 h1 {
                     padding: 0 0 20px;
